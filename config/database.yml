@@ -83,4 +83,4 @@ production:
   <<: *default
   database: Recipe_App_production
   username: Recipe_App
-  password: <%= ENV["RECIPE_APP_DATABASE_PASSWORD"] %>
+  password: root
