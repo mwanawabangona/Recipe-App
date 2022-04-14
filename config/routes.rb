@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :foods, only: %i[index new create destroy]
   get 'public_recipes', to: 'recipes#public', as: 'public'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'users/:id', to: 'users#show', as: 'user'
 
   # Defines the root path route ("/")
   root 'foods#index'
