@@ -1,0 +1,34 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "username": "ode",
+            "database": "recipe_app_development",
+            "password": "root",
+            "name": "database"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "database": "recipe_app_development",
+            "username": "ode",
+            "password": "root",
+            "name": "database"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "ode",
+            "database": "Recipe_App_development",
+            "username": "ode",
+            "password": "root"
+        }
+    ]
+}
