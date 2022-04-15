@@ -1,39 +1,60 @@
 require 'rails_helper'
 
-RSpec.describe Food, type: :model do
-  let(:user) { User.create(name: 'Yaseer Okino', email: 'yaseerokinop@mail.com', password: '12345678') }
-  let(:food) { user.foods.create(name: 'Rice', measurement_unit: 'grams', price: 500) }
+RSpec.describe 'Food view', type: :feature do
+  describe 'Food index page' do
+    before(:each) do
+      @user = User.create!(email: 'max@email.com', password: 'password')
+      @food = Food.create!(user_id: @user.id, name: 'Ground beef', measurement_unit: 'kg', price: 12)
 
-  describe 'Food Validations' do
-    context 'when valid' do
-      it { expect(food).to be_valid }
+      visit 'users/sign_in'
+      fill_in 'Email', with: 'max@email.com'
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
     end
 
-    it 'should allow valid name' do
-      food.name = 'i'
-      expect(food).to_not be_valid
+    scenario 'validates if Food is displayed on foods page' do
+      visit "users/#{@user.id}/foods"
+      expect(page).to have_content('Foods')
     end
 
-    it 'should allow valid name' do
-      expect(food).to be_valid
+    scenario 'user can create new food using button' do
+      visit "users/#{@user.id}/foods"
+      expect(page).to have_content('New food')
     end
 
-    it 'should validate measurment unit' do
-      food.measurement_unit = nil
-      expect(food).to_not be_valid
+    scenario 'New Food button redirects to New Food form' do
+      visit "users/#{@user.id}/foods"
+      click_link 'New food'
+      sleep 1.5
+      expect(page).to have_content('Price')
+    end
+  end
+
+  describe 'New food form page' do
+    before(:each) do
+      @user = User.create!(email: 'max@email.com', password: 'password')
+      @food = Food.create!(user_id: @user.id, name: 'Ground beef', measurement_unit: 'kg', price: 12)
+
+      visit 'users/sign_in'
+      fill_in 'Email', with: 'max@email.com'
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
+      visit "users/#{@user.id}/foods/new"
     end
 
-    it 'should validate measurment unit' do
-      expect(food).to be_valid
+    scenario 'form has correct fields' do
+      expect(page).to have_content('Name')
+      expect(page).to have_content('Measurement unit')
+      expect(page).to have_content('Price')
     end
 
-    it 'should validate price' do
-      food.price = -10
-      expect(food).to_not be_valid
-    end
+    scenario 'users can create create food' do
+      fill_in 'Name', with: 'chicken'
+      fill_in 'Measurement unit', with: 'kg'
+      fill_in 'Price', with: 6
+      click_button 'Create Food'
 
-    it 'should validate price' do
-      expect(food).to be_valid
+      expect(page).to have_content('Food created succesfully')
     end
   end
 end
