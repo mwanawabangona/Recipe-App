@@ -64,7 +64,7 @@ To get a local copy up and running follow these simple example steps.
 👤 **Olatunji Azeem**
 
 - GitHub: [@zemola](https://github.com/zemola)
-- Twitter: [@zemola](https://mobile.twitter.com/zemola)
+- Twitter: [@zemola](https://mobile.twitter.com/zemolat)
 - LinkedIn: [linkin](https://www.linkedin.com/in/olatunjiazeem/)
 
 
