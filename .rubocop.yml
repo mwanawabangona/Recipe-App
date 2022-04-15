@@ -30,6 +30,8 @@ Metrics/BlockLength:
 
 Style/Documentation:
   Enabled: false
+Layout/EndOfLine:
+   Enabled: False
 Style/ClassAndModuleChildren:
   Enabled: false
 Style/EachForSimpleLoop:
@@ -40,7 +42,6 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
-
 Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
